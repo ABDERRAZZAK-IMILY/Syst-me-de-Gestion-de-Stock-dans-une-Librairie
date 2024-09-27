@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 int main()
 {
     int var;
@@ -8,7 +9,8 @@ int main()
     float Prix[50];
     int Quantite[50];
     int numlivre = 0;
-    while (2) {
+    char nom[50];
+    jump :
     printf("entre le nemiro de l opiration : \n");
     printf("1.Ajouter un livre au stock\n2.Afficher tous les livres disponibles \n3.Rechercher un livre par son titre. \n4.Mettre à jour la quantité d'un livre. \n5.Supprimer un livre du stock.\n6.Afficher le nombre total de livres en stock.\n");
 
@@ -25,20 +27,49 @@ int main()
        scanf("%d" , &Quantite[numlivre]);
        printf("le livre est ajouter!!\n");
        numlivre++;
+       goto jump;
        break;
    case 2 :
        for (int i = 0 ; i < numlivre; i++){
-       printf("Titre du livre : %s\n" , Titre[i]);
+       printf("le %d Titre du livre : %s\n" , i+1, Titre[i]);
        printf("Auteur :%s\n" ,Auteur[i]);
        printf("Prix :%f\n" ,Prix[i]);
-       printf("Quantite: %d\n\n\n" , Quantite[i]);
+       printf("Quantite: %d\n" , Quantite[i]);
        }
+       goto jump;
        break;
-   case 3 :
+       case 3:
+    printf("Entrez le nom du livre : ");
+    char nom[100];
+    scanf("%s", nom);
+
+    for (int i = 0; i < numlivre; i++) {
+        if (strcmp(nom, Titre[i]) == 0) {
+            printf("Le Titre du livre : %s\n", Titre[i]);
+            printf("Auteur : %s\n", Auteur[i]);
+            printf("Prix : %.2f\n", Prix[i]);
+            printf("Quantité : %d\n", Quantite[i]);
+        }
+    }
+    break;
+
+       case 4 :
+       for (int i = 0; i< Titre[50][50];i++) {
+        printf("le nom de livre :");
+        scanf("%s" , &Titre[i]);
+        printf("la nouvell Quqntite :");
+        scanf("%d" , &Quantite);
+       }
+       goto jump;
+        break;
+       case 6 :
+
        printf("le Nombre Total de Livres en Stock : %d\n" , numlivre);
+       goto jump;
+       break;
+
 
     }
-    }
+
     return 0;
 }
-
