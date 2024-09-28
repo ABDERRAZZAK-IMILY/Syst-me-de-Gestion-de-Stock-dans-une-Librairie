@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,8 +14,8 @@ int main()
     char nom[50];
     char title[50];
     jump :
-    printf("entre le nemiro de l opiration : \n");
-    printf("1.Ajouter un livre au stock\n2.Afficher tous les livres disponibles \n3.Rechercher un livre par son titre. \n4.Mettre à jour la quantité d'un livre. \n5.Supprimer un livre du stock.\n6.Afficher le nombre total de livres en stock.\n");
+    printf("\n*******************************************************************\n entre le nemiro de l opiration : \n");
+    printf("1.Ajouter un livre au stock\n2.Afficher tous les livres disponibles \n3.Rechercher un livre par son titre. \n4.Mettre à jour la quantité d'un livre. \n5.Supprimer un livre du stock.\n6.Afficher le nombre total de livres en stock.\n**************************************************************************\n");
 
     scanf("%d" , &var);
     switch (var){
@@ -53,7 +52,7 @@ int main()
             printf("Le Titre du livre : %s\n", Titre[i]);
             printf("Auteur : %s\n", Auteur[i]);
             printf("Prix : %.2f\n", Prix[i]);
-            printf("Quantité : %d\n", Quantite[i]);
+            printf("Quantité : %d\n**********************************************\n", Quantite[i]);
         }
     }
     break;
