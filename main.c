@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,7 +10,10 @@ int main()
     float Prix[50];
     int Quantite[50];
     int numlivre = 0;
+    int tot = 0;
+    int sup = 0;
     char nom[50];
+    char title[50];
     jump :
     printf("entre le nemiro de l opiration : \n");
     printf("1.Ajouter un livre au stock\n2.Afficher tous les livres disponibles \n3.Rechercher un livre par son titre. \n4.Mettre à jour la quantité d'un livre. \n5.Supprimer un livre du stock.\n6.Afficher le nombre total de livres en stock.\n");
@@ -26,11 +30,12 @@ int main()
        printf("Quantite:");
        scanf("%d" , &Quantite[numlivre]);
        printf("le livre est ajouter!!\n");
+       tot += Quantite[numlivre];
        numlivre++;
        goto jump;
        break;
    case 2 :
-       for (int i = 0 ; i < numlivre; i++){
+       for ( int i = 0 ; i < numlivre; i++){
        printf("le %d Titre du livre : %s\n" , i+1, Titre[i]);
        printf("Auteur :%s\n" ,Auteur[i]);
        printf("Prix :%f\n" ,Prix[i]);
@@ -62,14 +67,31 @@ int main()
        }
        goto jump;
         break;
-       case 6 :
+       case 5:
+     printf("Entrer le titre du livre: ");
+    scanf("%s", &title);
 
-       printf("le Nombre Total de Livres en Stock : %d\n" , numlivre);
+    for (sup = 0; sup < numlivre; sup++) {
+        if (strcmp(title, Titre[sup]) == 0) {
+            for (int is = sup; sup < (numlivre - 1); is++){
+                strcpy(Titre[is], Titre[is + 1]);
+                strcpy(Auteur[is], Auteur[is + 1]);
+                Prix[is] = Prix[is + 1];
+                Quantite[is] = Quantite[is + 1];
+            }
+            numlivre--;
+            printf("supprimé avec succès!\n");
+            break;
+        }
+    }
+
+        goto jump;
+        break;
+       case 6 :
+       printf("le Nombre Total de Livres en Stock : %d\n" ,tot);
        goto jump;
        break;
-
-
-    }
+     }
 
     return 0;
 }
